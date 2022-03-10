@@ -1,0 +1,165 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+	background-color: rgb(33, 41, 87);
+}
+
+h1 {
+	padding-top: 0.5rem;
+	text-align: center;
+	color: rgb(87, 98, 156);
+}
+
+h2,
+h4 {
+	padding-bottom: 0.8rem;
+}
+
+#main {
+	display: block;
+	margin: 0.6rem;
+	padding: 0.5rem;
+	border-radius: 8px;
+	background-color: rgb(237, 247, 255);
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-items: center;
+	justify-content: space-evenly;
+	min-height: 250px;
+}
+
+.sub-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 0.6rem;
+	padding: 0.6rem;
+	border-radius: 8px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0.2rem 0.2rem 0.9rem rgba(0, 0, 0, 0.2);
+	width: 40%;
+}
+
+.sub-container #btn-container {
+	justify-content: space-around;
+}
+
+.text-money {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.loan-hidden {
+	display: none;
+}
+
+.loan-visible {
+	display: block;
+}
+
+button {
+	border-radius: 5px;
+	background-color: rgb(106, 219, 106);
+	padding: 0.5rem;
+	width: 5.5rem;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: rgb(255, 148, 49);
+	cursor: pointer;
+}
+
+.dropdown-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.dropdown-placeholder {
+	cursor: pointer;
+	text-align: left;
+	border-radius: 5px;
+	padding: 0.2rem;
+	width: 97%;
+}
+
+.dropdown-placeholder:hover {
+	background-color: rgba(33, 41, 87, 0.1);
+}
+
+.hidden-list {
+	display: none;
+}
+
+.visible-list {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	padding: 0.3rem;
+	width: 97%;
+	list-style: none;
+	border-radius: 5px;
+	box-shadow: 0.2rem 0.2rem 0.9rem rgba(0, 0, 0, 0.2);
+}
+
+.list-item:hover {
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.store-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.laptop-pic-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 2.8rem;
+	width: 25%;
+}
+
+.image {
+	width: 90%;
+}
+
+.laptop-info-container {
+	background-color: rgb(255, 255, 255);
+	padding: 1.5rem 1.8rem;
+	width: 55%;
+}
+
+.laptop-buying-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 20%;
+	padding: 0.5rem;
+}
+
+.label-warn {
+	color: rgb(255, 148, 49);
+}
+
+.btn-repay-hidden {
+	display: none;
+}
+
+.btn-repay-visible {
+	display: block;
+}

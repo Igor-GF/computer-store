@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./app.js" type="module" defer></script>
+  <link rel="stylesheet" href="./styles.css">
+  <title>JS Fundamentals: Computer Store</title>
+</head>
+<body>
+  <header>
+    <h1>Assignment 1 JS Fundamentals: Computer Store</h1>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section class="sub-container">
+        <h2>User account</h2> 
+
+        <div class="text-money">
+          <h4>Balance:</h4>
+          <p class="balance">€ 0</p>
+        </div>  
+        
+        <div class="text-money loan-hidden">
+          <h4>Outstanding loan:</h4>
+          <p class="loan">€ 0</p>
+        </div>
+
+        <div id="btn-container">
+          <button class="btn-get-loan">Get a loan</button>
+        </div>
+      </section>
+
+      <section class="sub-container">
+        <h2>Work</h2> 
+
+        <div class="text-money">
+          <h4>Pay:</h4>
+          <p class="pay">€ 0</p>
+        </div>  
+
+        <div>
+          <button class="btn-repay-hidden">Repay</button>
+        </div>
+
+        <div id="btn-container">
+          <button class="btn-bank">Bank</button>
+          <button class="btn-work">Work</button>
+        </div>
+      </section>
+
+      <section class="sub-container">
+        <div>
+          <h2>Laptops</h2>
+
+          <div class="dropdown-container">
+            <div class="dropdown-placeholder">
+              <h4>Choose a model</h4>
+            </div>
+
+            <ul class="hidden-list"></ul>
+          </div>  
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <section class="store-container sub-container">
+        <div class="laptop-pic-container">
+          <img class="image" src="./assets/images/default.jpg" alt="laptop">
+        </div>
+
+        <div class="laptop-info-container">
+          <h2 class="label-model"></h2>
+          <p class="label-description"></p>
+        </div>
+
+        <div class="laptop-buying-container">
+          <div>
+            <h1 class="label-price"></h1>
+            <h4 class="label-warn"></h4>
+          </div>
+          <div>
+            <button class="btn-buy">BUY NOW</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
