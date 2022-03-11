@@ -46,7 +46,6 @@ fetch('https://noroff-komputer-store-api.herokuapp.com/computers')
 // FUNCTIONS
 function toWork() {
   pay += 100;
-  getLaptop(2);
   updateDisplay();
 }
 
@@ -56,7 +55,7 @@ function bankTransfer() {
 
     if(tenPercent >= loan) {
       toggleLoanRepay();
-      bankBalance += tenPercent - loan;
+      bankBalance += pay - loan;
       loan = 0;
     } else {
       // when transfering loan substracts 10% of pay
@@ -94,17 +93,6 @@ function getALoan(amount) {
   updateDisplay();
 }
 
-function toBuy() {
-  if(bankBalance >= price) {
-    bankBalance -= price;
-    warnElement.textContent = "You are the owner of this laptop";
-  } else {
-    warnElement.textContent = "You CANNOT afford this laptop";
-  }
-
-  updateDisplay();
-}
-
 function toRepay() {
   if(pay >= loan) {
     pay -= loan;
@@ -123,28 +111,34 @@ function toggleLoanRepay() {
   loanBlockElement.classList.toggle("loan-visible");
 }
 
-function createDropdownElements(jsonData) {
-  jsonData.map((pc) => {
-    let liElement = document.createElement("li");
-    liElement.setAttribute("class", "list-item");
-    liElement.setAttribute("id", pc.id);
-    liElement.innerHTML = pc.title;
-    laptopList.append(liElement);
-  });
-}
-
-function getLaptop(laptopId) {
-  let laptop = laptopsData.find(item => {
-    return item.id == laptopId;
-  })
-  return setLaptopBox(laptop);
-}
-
 function setLaptopBox(laptop) {
   model = laptop.title;
   description = laptop.description;
   price = laptop.price;
   image = laptop.image;
+
+  updateDisplay();
+}
+
+function createDropdownElements(jsonData) {
+  jsonData.map((laptop) => {
+    let liElement = document.createElement("li");
+    liElement.setAttribute("class", "list-item");
+    liElement.onclick = () => setLaptopBox(laptop);
+    liElement.innerHTML = laptop.title;
+    laptopList.append(liElement);
+  });
+}
+
+function toBuy() {
+  if(bankBalance >= price) {
+    bankBalance -= price;
+    warnElement.textContent = "You are the owner of this laptop";
+  } else {
+    warnElement.textContent = "You CANNOT afford this laptop";
+  }
+
+  updateDisplay();
 }
 
 function updateDisplay() {
@@ -154,7 +148,7 @@ function updateDisplay() {
   modelElement.textContent = model;
   descriptionElement.textContent = description;
   priceElement.textContent = "€" + price;
-  image ? imageElement.src = image : imageElement.src = "./assets/images/default.jpg";
+  imageElement.src = image;
 }
 
 // EVENT LISTENERS
@@ -172,6 +166,7 @@ workBtn.addEventListener("click", e => {
 });
 
 dropdownPlaceholder.addEventListener("click", e => {
+  warnElement.textContent = "";
   laptopList.classList.toggle("visible-list");
 });
 
@@ -182,7 +177,3 @@ buyBtn.addEventListener("click", e => {
 repayBtn.addEventListener("click", e => {
   toRepay();
 });
-
-// laptopList.addEventListener("click", e => {
-  
-// });
