@@ -84,7 +84,7 @@ function getALoan() {
       bankBalance += input;
       loan = input;
       updateDisplay();
-      
+
     } else {
       alert("You can only get up to " + maxAmount);
     }
@@ -168,7 +168,6 @@ function updateDisplay() {
   priceElement.textContent = "€" + price;
   imageElement.src = image;
   specificsElement.textContent = specs;
-  console.log(specs);
 }
 
 // EVENT LISTENERS
