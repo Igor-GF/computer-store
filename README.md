@@ -6,6 +6,9 @@ Dynamic webpage using “vanilla” JavaScript from Noroff Frontend course, whic
 ## Contributing
 I am open to receive advice and tips which can help me to improve the design, the logic, to clean up the code, etc. So that I can improve myself as a developer.
 
+## Run he project
+https://igor-gf.github.io/computer-store/
+
 ## Built With
 [Microsoft VSCode](https://code.visualstudio.com/)
 
