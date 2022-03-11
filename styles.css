@@ -154,6 +154,7 @@ button:hover {
 
 .label-warn {
 	color: rgb(255, 148, 49);
+	align-items: center;
 }
 
 .btn-repay-hidden {

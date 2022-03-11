@@ -4,11 +4,12 @@ let bankBalance = 0;
 let loan = 0;
 let pay = 0;
 let laptopsData;
-let image;
+let image = "assets/images/default.jpg";
 let model;
 let description;
 let price = 0;
 let warnMessage;
+let specs = "";
 
 // QUERIES
 const balanceElement = document.querySelector(".balance");
@@ -27,7 +28,7 @@ let modelElement = document.querySelector(".label-model");
 let descriptionElement = document.querySelector(".label-description");
 let priceElement = document.querySelector(".label-price");
 let imageElement = document.querySelector(".image");
-
+let specificsElement = document.querySelector(".specifics");
 
 //FETCH API
 fetch('https://noroff-komputer-store-api.herokuapp.com/computers')
@@ -70,24 +71,26 @@ function bankTransfer() {
 
   pay = 0;
   updateDisplay();
-
-  console.log("pay: " + pay);
-  console.log("bankBalance: " + bankBalance);
-  console.log("loan: " + loan);
 }
 
-function getALoan(amount) {
+function getALoan() {
   let maxAmount = bankBalance * 2;
 
-  if(amount <= maxAmount && loan == 0) {
-    toggleLoanRepay();
-    bankBalance += amount;
-    loan = amount;
-    updateDisplay();
+  if(loan <= 0) {
+    let input = parseInt(window.prompt('How much do you want to get?'));
+
+    if(input <= maxAmount) {
+      toggleLoanRepay();
+      bankBalance += input;
+      loan = input;
+      updateDisplay();
+      
+    } else {
+      alert("You can only get up to " + maxAmount);
+    }
 
   } else {
-    
-    alert("You can only get up to " + maxAmount);
+    alert("You already have a loan.")
   }
 
   updateDisplay();
@@ -111,13 +114,28 @@ function toggleLoanRepay() {
   loanBlockElement.classList.toggle("loan-visible");
 }
 
+function toggleDropdown() {
+  laptopList.classList.toggle("visible-list");
+}
+
 function setLaptopBox(laptop) {
   model = laptop.title;
   description = laptop.description;
   price = laptop.price;
-  image = laptop.image;
+  image = "https://noroff-komputer-store-api.herokuapp.com/" + laptop.image;
 
+  displaySpecifications(laptop.specs);
+
+  toggleDropdown();
   updateDisplay();
+}
+
+function displaySpecifications(info) {
+  specs = "";
+
+  info.map((specification) => {
+    specs += specification + " | ";
+  })
 }
 
 function createDropdownElements(jsonData) {
@@ -149,12 +167,13 @@ function updateDisplay() {
   descriptionElement.textContent = description;
   priceElement.textContent = "€" + price;
   imageElement.src = image;
+  specificsElement.textContent = specs;
+  console.log(specs);
 }
 
 // EVENT LISTENERS
 getLoanBtn.addEventListener("click", e => {
-  let input = window.prompt('How much do you want to get?');
-  getALoan(parseInt(input));
+  getALoan();
 });
 
 bankBtn.addEventListener("click", e => {
@@ -167,7 +186,7 @@ workBtn.addEventListener("click", e => {
 
 dropdownPlaceholder.addEventListener("click", e => {
   warnElement.textContent = "";
-  laptopList.classList.toggle("visible-list");
+  toggleDropdown();
 });
 
 buyBtn.addEventListener("click", e => {
